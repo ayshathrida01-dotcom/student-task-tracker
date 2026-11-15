@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Task Tracker - Account</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Student Task Tracker</h1>
+        <p>Manage your tasks and stay productive!</p>
+    </header>
+
+    <main class="container">
+
+        <section class="card">
+            <h2>Create Account</h2>
+
+            <form id="registerForm">
+                <input type="text" id="registerName"
+                    placeholder="Full Name" required>
+
+                <input type="email" id="registerEmail"
+                    placeholder="Email Address" required>
+
+                <input type="password" id="registerPassword"
+                    placeholder="Password (minimum 8 characters)"
+                    minlength="8" required>
+                    <label for="registerRole">Register As:</label>
+
+<select id="registerRole" required>
+    <option value="student">Student</option>
+    <option value="teacher">Teacher</option>
+</select>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <p id="registerMessage"></p>
+        </section>
+
+        <section class="card">
+            <h2>Login</h2>
+
+            <form id="loginForm">
+                <input type="email" id="loginEmail"
+                    placeholder="Email Address" required>
+
+                <input type="password" id="loginPassword"
+                    placeholder="Password" required>
+
+                <button type="submit">Login</button>
+            </form>
+
+            <p id="loginMessage"></p>
+        </section>
+
+    </main>
+
+    <script src="auth.js"></script>
+
+</body>
+</html>

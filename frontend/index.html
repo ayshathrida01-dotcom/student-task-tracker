@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Task Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+    <h1>Student Task Tracker</h1>
+
+    <div class="user-info">
+        <span id="welcomeUser">Welcome!</span>
+        <button id="logoutButton">Logout</button>
+    </div>
+</header>
+
+<!-- Admin Dashboard -->
+<section id="adminDashboard" style="display: none; padding: 20px;">
+    <h2>Admin Dashboard</h2>
+
+    <h3>Pending Teacher Registrations</h3>
+
+    <button type="button" id="refreshTeachersButton">
+        Refresh Requests
+    </button>
+
+    <div id="pendingTeachersContainer">
+        <p>Loading pending teacher requests...</p>
+    </div>
+</section>
+
+
+    <main id="taskDashboard">
+        <section class="task-form">
+            <h2>Add a New Task</h2>
+
+            <form id="taskForm">
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Enter task title"
+                    required
+                >
+
+                <textarea
+                    id="description"
+                    placeholder="Enter task description"
+                ></textarea>
+
+                <label for="due_date">Due Date</label>
+                <input type="date" id="due_date">
+
+                <label for="status">Task Status</label>
+                <select id="status">
+                    <option value="pending">Pending</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+
+                <button type="submit" id="submitButton">
+                    Add Task
+                </button>
+            </form>
+        </section>
+
+        <section class="task-list">
+            <h2>My Tasks</h2>
+
+            <div class="filter-container">
+                <label for="filterStatus">Filter:</label>
+                <select id="filterStatus">
+                    <option value="all">All Tasks</option>
+                    <option value="pending">Pending</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div id="taskContainer">
+                <p>Loading tasks...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

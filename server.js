@@ -1,4 +1,4 @@
-
+const cors = require("cors");
 const express = require('express');
 const pool = require('./db');
 require('dotenv').config();
@@ -6,6 +6,7 @@ require('dotenv').config();
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 app.use(express.json());
 
 // Test endpoint
@@ -268,6 +269,13 @@ app.get('/api/v1/health', async (req, res) => {
             message: 'Database connection failed'
         });
     }
+});
+
+// Handle unknown routes with a JSON response
+app.use((req, res) => {
+    res.status(404).json({
+        error: 'Route not found'
+    });
 });
 
 app.listen(PORT, () => {
