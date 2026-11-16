@@ -26,7 +26,7 @@ function createTaskRoutes(
     // Create tasks
     router.post(
         "/",
-        authorizeRoles("student", "admin"),
+        authorizeRoles("student", "teacher", "admin"),
         taskController.createTask
     );
 
@@ -40,7 +40,7 @@ function createTaskRoutes(
     // Delete tasks
     router.delete(
         "/:id",
-        authorizeRoles("student", "admin"),
+        authorizeRoles("admin"),
         taskController.deleteTask
     );
 

@@ -14,6 +14,7 @@ const filterStatus = document.getElementById("filterStatus");
 const submitButton = document.getElementById("submitButton");
 
 let editingTaskId = null;
+let currentUserRole = null;
 let allTasks = [];
 function getAuthHeaders() {
     const token = localStorage.getItem("token");
@@ -96,16 +97,18 @@ function displayTasks() {
             </span>
 
             <div class="task-actions">
-                <button type="button" data-action="edit"
-                    data-id="${Number(task.id)}">
-                    Edit
-                </button>
+    <button type="button" data-action="edit"
+        data-id="${Number(task.id)}">
+        Edit
+    </button>
 
-                <button type="button" class="delete-btn"
-                    data-action="delete" data-id="${Number(task.id)}">
-                    Delete
-                </button>
-            </div>
+    ${currentUserRole === "admin" ? `
+        <button type="button" class="delete-btn"
+            data-action="delete" data-id="${Number(task.id)}">
+            Delete
+        </button>
+    ` : ""}
+</div>
         </div>
     `).join("");
 }
@@ -282,6 +285,7 @@ async function verifyUserLogin() {
 
         // Check user's role
         const role = data.user.role;
+        currentUserRole = role;
 
         if (role === "admin") {
     // Show both Admin and Task Dashboards
